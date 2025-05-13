@@ -158,36 +158,23 @@
         </div>
     </div>
 
-    <!-- HERO con fondo azul + carrusel de imágenes animadas -->
+ <!-- HERO con fondo azul + lluvia de fotos animadas -->
 <section class="relative overflow-hidden bg-primary py-24 md:py-32">
-  <!-- FONDO de imágenes animadas -->
-  <div class="absolute inset-0 z-0 overflow-hidden">
-    <div class="flex animate-slide-x space-x-4 w-[200%] h-full">
-      <!-- Repetir imágenes para efecto infinito -->
-      <div class="flex space-x-4">
-        <img src="/1.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img1">
-        <img src="/2.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img2">
-        <img src="/3.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img3">
-        <img src="/4.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img4">
-        <img src="/5.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img5">
-        <img src="/6.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img6">
-        <img src="/7.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img7">
-        <img src="/8.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img8">
-        <img src="/9.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img9">
-        <img src="/10.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img10">
-        <!-- Repetición para loop infinito -->
-        <img src="/1.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img1">
-        <img src="/2.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img2">
-        <img src="/3.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img3">
-        <img src="/4.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img4">
-        <img src="/5.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img5">
-        <img src="/6.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img6">
-        <img src="/7.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img7">
-        <img src="/8.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img8">
-        <img src="/9.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img9">
-        <img src="/10.jpg" class="h-48 w-auto object-cover rounded-lg opacity-80" alt="img10">
-      </div>
-    </div>
+  <!-- FONDO lluvia de imágenes -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <!-- 10 imágenes animadas cayendo desde arriba y abajo con diferentes delays y posiciones -->
+    <template>
+      <img src="1.png" class="absolute w-40 h-40 object-cover rounded-lg opacity-70 animate-float-down" style="top:-150px; left:10%; animation-delay: 0s;">
+      <img src="2.png" class="absolute w-44 h-44 object-cover rounded-lg opacity-70 animate-float-up" style="bottom:-150px; left:20%; animation-delay: 3s;">
+      <img src="3.png" class="absolute w-36 h-36 object-cover rounded-lg opacity-70 animate-float-down" style="top:-150px; left:35%; animation-delay: 2s;">
+      <img src="4.png" class="absolute w-40 h-40 object-cover rounded-lg opacity-70 animate-float-up" style="bottom:-150px; left:50%; animation-delay: 1s;">
+      <img src="5.png" class="absolute w-48 h-48 object-cover rounded-lg opacity-70 animate-float-down" style="top:-150px; left:65%; animation-delay: 4s;">
+      <img src="6.png" class="absolute w-40 h-40 object-cover rounded-lg opacity-70 animate-float-up" style="bottom:-150px; left:75%; animation-delay: 2.5s;">
+      <img src="7.png" class="absolute w-36 h-36 object-cover rounded-lg opacity-70 animate-float-down" style="top:-150px; left:85%; animation-delay: 5s;">
+      <img src="8.png" class="absolute w-44 h-44 object-cover rounded-lg opacity-70 animate-float-up" style="bottom:-150px; left:90%; animation-delay: 1.5s;">
+      <img src="9.png" class="absolute w-40 h-40 object-cover rounded-lg opacity-70 animate-float-down" style="top:-150px; left:5%; animation-delay: 3.5s;">
+      <img src="10.png" class="absolute w-48 h-48 object-cover rounded-lg opacity-70 animate-float-up" style="bottom:-150px; left:40%; animation-delay: 0.5s;">
+    </template>
   </div>
 
   <!-- CAPA de contenido sobre fondo -->
@@ -204,14 +191,23 @@
   </div>
 </section>
 
-<!-- ANIMACIÓN PERSONALIZADA con Tailwind plugin o CSS -->
+<!-- ANIMACIONES PERSONALIZADAS -->
 <style>
-@keyframes slide-x {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@keyframes float-down {
+  0% { transform: translateY(-200px) rotate(0deg); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
-.animate-slide-x {
-  animation: slide-x 40s linear infinite;
+@keyframes float-up {
+  0% { transform: translateY(200px) rotate(0deg); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-110vh) rotate(-360deg); opacity: 0; }
+}
+.animate-float-down {
+  animation: float-down 12s linear infinite;
+}
+.animate-float-up {
+  animation: float-up 14s linear infinite;
 }
 </style>
 
